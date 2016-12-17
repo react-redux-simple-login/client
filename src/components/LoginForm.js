@@ -9,12 +9,12 @@ var LoginForm = React.createClass({
     return({ username: '', password: ''});
   },
 
-  handleUsernameChange() {
-    console.log('changed username');
+  handleUsernameChange(event) {
+    this.setState({username: event.target.value});
   },
 
-  handlePasswordChange() {
-    console.log('changed password');
+  handlePasswordChange(event) {
+    this.setState({password: event.target.value});
   },
 
   handleSubmit() {
