@@ -1,8 +1,7 @@
 import React from 'react';
 import request from 'superagent';
 import { connect } from 'react-redux';
-import store from '../store';
-import { userLoginSuccess } from '../actions/user-actions';
+import { userLoginSuccess, userLogoutSuccess } from '../actions/user-actions';
 import LoginForm from './LoginForm.js';
 import LogoutButton from './LogoutButton.js';
 
@@ -10,6 +9,11 @@ var App = React.createClass({
 
   getInitialState() {
     return({ username: '', password: '', message: null, token: null});
+  },
+
+  //Wouldn't log app state in production code, but included here to show functionality
+  componentDidMount() {
+    console.log("Login State: ", this.props.loginState);
   },
 
   handleUsernameChange(event) {
@@ -40,6 +44,8 @@ var App = React.createClass({
         }
 
         else {
+          this.props.login(res.body);
+
           this.setState({
             message: 'Login successful!',
             token: res.body.token
@@ -50,8 +56,9 @@ var App = React.createClass({
           username: '',
           password: ''
         });
-
-        console.log(this.props.userState);
+        
+        //Wouldn't log app state in production code, but included here to show functionality
+        console.log("Login State: ", this.props.loginState);
       })
   },
 
@@ -72,6 +79,7 @@ var App = React.createClass({
         }
 
         else {
+          this.props.logout();
           this.setState({
             token: null
           })
@@ -112,6 +120,9 @@ const mapDispatchToProps = function(dispatch){
   return {
     login: function(user){
       dispatch(userLoginSuccess(user));
+    },
+    logout: function(user){
+      dispatch(userLogoutSuccess());
     }
   }
 }

@@ -15,8 +15,9 @@ const userReducer = function(state = initialState, action) {
     case types.USER_LOGOUT_SUCCESS:
       return {};
 
+    default:
+      return state;
   }
-  return state;
 };
 
 export default userReducer;
