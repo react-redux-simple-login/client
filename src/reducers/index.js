@@ -1,6 +1,5 @@
-'use strict';
 
-import { combineReducers} from 'Redux';
+import { combineReducers} from 'redux';
 import userReducer from './user-reducer';
 
 var reducers = combineReducers({

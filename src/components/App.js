@@ -1,5 +1,8 @@
 import React from 'react';
 import request from 'superagent';
+import { connect } from 'react-redux';
+import store from '../store';
+import { userLoginSuccess } from '../actions/user-actions';
 import LoginForm from './LoginForm.js';
 import LogoutButton from './LogoutButton.js';
 
@@ -48,6 +51,7 @@ var App = React.createClass({
           password: ''
         });
 
+        console.log(this.props.userState);
       })
   },
 
@@ -100,4 +104,16 @@ var App = React.createClass({
   }
 });
 
-export default App;
+const mapStateToProps = function(store) {
+  return store;
+}
+
+const mapDispatchToProps = function(dispatch){
+  return {
+    login: function(user){
+      dispatch(userLoginSuccess(user));
+    }
+  }
+}
+
+module.exports = connect(mapStateToProps, mapDispatchToProps)(App);

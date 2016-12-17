@@ -1,4 +1,3 @@
-'use strict';
 
 //holds application state
 //allows access to state

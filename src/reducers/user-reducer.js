@@ -1,4 +1,3 @@
-'use strict';
 
 //the reducer specifies how the application state changes
 //all applications state is stored as a single object
