@@ -3,6 +3,7 @@ import request from 'superagent';
 import { connect } from 'react-redux';
 import { userLoginSuccess, userLogoutSuccess } from '../actions/user-actions';
 import LoginForm from './LoginForm.js';
+import BackendDisplay from './BackendDisplay.js';
 import LogoutButton from './LogoutButton.js';
 
 var App = React.createClass({
@@ -101,9 +102,12 @@ var App = React.createClass({
         message={this.state.message}
       />
       :
-      <LogoutButton
-        handleLogoutSubmit={this.handleLogout}
-      />;
+      <div>
+        <BackendDisplay />
+        <LogoutButton
+          handleLogoutSubmit={this.handleLogout}
+        />
+      </div>;
 
     return (
       <div>
