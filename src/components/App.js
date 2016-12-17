@@ -8,11 +8,12 @@ import LogoutButton from './LogoutButton.js';
 var App = React.createClass({
 
   getInitialState() {
-    return({ username: '', password: '', message: null, token: null});
+    return({ username: '', password: '', message: null, token: this.props.loginState.token});
   },
 
   //Wouldn't log app state in production code, but included here to show functionality
   componentDidMount() {
+    console.log("Component state: ", this.state);
     console.log("Login State: ", this.props.loginState);
   },
 
@@ -56,7 +57,7 @@ var App = React.createClass({
           username: '',
           password: ''
         });
-        
+
         //Wouldn't log app state in production code, but included here to show functionality
         console.log("Login State: ", this.props.loginState);
       })
@@ -68,7 +69,7 @@ var App = React.createClass({
     request
       .del('http://localhost:8080/auth')
       .send({
-        token: this.state.token
+        token: this.props.loginState.token
       })
       .end((err, res) => {
 
@@ -90,11 +91,7 @@ var App = React.createClass({
 
   render() {
 
-    var Display = (this.state.token) ?
-      <LogoutButton
-        handleLogoutSubmit={this.handleLogout}
-      />
-      :
+    var Display = (!this.state.token) ?
       <LoginForm
         username={this.state.username}
         handleUsernameChange={this.handleUsernameChange}
@@ -102,6 +99,10 @@ var App = React.createClass({
         handlePasswordChange={this.handlePasswordChange}
         handleLoginSubmit={this.handleLoginSubmit}
         message={this.state.message}
+      />
+      :
+      <LogoutButton
+        handleLogoutSubmit={this.handleLogout}
       />;
 
     return (
