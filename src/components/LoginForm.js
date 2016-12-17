@@ -31,10 +31,21 @@ var LoginForm = React.createClass({
       .end((err, res) => {
 
         if(!res.body.token) {
-          console.log(res.body.err);
-          this.setState({ message: res.body.err })
+          this.setState({
+            message: res.body.err
+          });
         }
 
+        else {
+          this.setState({
+            message: 'Login successful!'
+          });
+        }
+
+        this.setState({
+          username: '',
+          password: ''
+        });
 
       })
   },
