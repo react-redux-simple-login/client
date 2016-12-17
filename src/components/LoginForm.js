@@ -29,8 +29,6 @@ var LoginForm = React.createClass({
       })
       .end((err, res) => {
 
-        console.log(res.body);
-
         if(!res.body.token) {
           this.setState({
             message: res.body.err
@@ -49,28 +47,32 @@ var LoginForm = React.createClass({
           password: ''
         });
 
-        console.log(this.state);
       })
   },
 
   handleLogout(event) {
     event.preventDefault();
-    console.log('user pressed logout button');
+    
     request
       .del('http://localhost:8080/auth')
       .send({
         token: this.state.token
       })
       .end((err, res) => {
+
         if(res.body.token) {
-          console.log('logout was not sucessful');
-        } else {
-          console.log('logout was successful');
+          this.setState({
+            message: res.body.err
+          });
+        }
+
+        else {
           this.setState({
             message: 'You are no longer logged in.',
             token: null
           })
         }
+
       })
   },
 
