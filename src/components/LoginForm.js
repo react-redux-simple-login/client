@@ -5,7 +5,7 @@ import LogoutButton from './LogoutButton.js';
 var LoginForm = React.createClass({
 
   getInitialState() {
-    return({ username: '', password: '', message: null});
+    return({ username: '', password: '', message: null, token: null});
   },
 
   handleUsernameChange(event) {
@@ -29,6 +29,8 @@ var LoginForm = React.createClass({
       })
       .end((err, res) => {
 
+        console.log(res.body);
+
         if(!res.body.token) {
           this.setState({
             message: res.body.err
@@ -37,7 +39,8 @@ var LoginForm = React.createClass({
 
         else {
           this.setState({
-            message: 'Login successful!'
+            message: 'Login successful!',
+            token: res.body.token
           });
         }
 
@@ -46,6 +49,28 @@ var LoginForm = React.createClass({
           password: ''
         });
 
+        console.log(this.state);
+      })
+  },
+
+  handleLogout(event) {
+    event.preventDefault();
+    console.log('user pressed logout button');
+    request
+      .del('http://localhost:8080/auth')
+      .send({
+        token: this.state.token
+      })
+      .end((err, res) => {
+        if(res.body.token) {
+          console.log('logout was not sucessful');
+        } else {
+          console.log('logout was successful');
+          this.setState({
+            message: 'You are no longer logged in.',
+            token: null
+          })
+        }
       })
   },
 
@@ -53,6 +78,12 @@ var LoginForm = React.createClass({
 
     var message = (this.state.message) ?
       <p>{this.state.message}</p>
+      : null;
+
+    var logout = (this.state.token) ?
+      <LogoutButton
+        handleLogout={this.handleLogout}
+      />
       : null;
 
     return (
@@ -77,7 +108,7 @@ var LoginForm = React.createClass({
             value="Login"
           />
         </form>
-        <LogoutButton />
+        {logout}
       </div>
     );
   }
