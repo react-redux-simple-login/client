@@ -17,8 +17,20 @@ var LoginForm = React.createClass({
     this.setState({password: event.target.value});
   },
 
-  handleSubmit() {
-    console.log('handle submit');
+  handleSubmit(event) {
+    event.preventDefault();
+    var username = this.state.username.trim();
+    var password = this.state.password.trim();
+
+    request
+      .post('http://localhost:8080/auth')
+      .send({
+        username,
+        password
+      })
+      .end((err, res) => {
+        console.log(res.body.token);
+      })
   },
 
   render() {
