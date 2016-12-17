@@ -96,10 +96,8 @@ var App = React.createClass({
       <div>
         {Display}
       </div>
-
     );
   }
-
 });
 
 export default App;
