@@ -6,7 +6,7 @@ import request from 'superagent';
 var LoginForm = React.createClass({
 
   getInitialState() {
-    return({ username: '', password: ''});
+    return({ username: '', password: '', message: null});
   },
 
   handleUsernameChange(event) {
@@ -29,14 +29,26 @@ var LoginForm = React.createClass({
         password
       })
       .end((err, res) => {
-        console.log(res.body.token);
+
+        if(!res.body.token) {
+          console.log(res.body.err);
+          this.setState({ message: res.body.err })
+        }
+
+
       })
   },
 
   render() {
+
+    var message = (this.state.message) ?
+      <p>{this.state.message}</p>
+      : null;
+
     return (
       <div>
         <h1>Login</h1>
+        {message}
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
