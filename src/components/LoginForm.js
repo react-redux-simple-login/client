@@ -1,7 +1,6 @@
-'use strict';
-
 import React from 'react';
 import request from 'superagent';
+import LogoutButton from './LogoutButton.js';
 
 var LoginForm = React.createClass({
 
@@ -78,6 +77,7 @@ var LoginForm = React.createClass({
             value="Login"
           />
         </form>
+        <LogoutButton />
       </div>
     );
   }
