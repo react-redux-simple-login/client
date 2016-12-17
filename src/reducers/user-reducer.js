@@ -1,7 +1,4 @@
 
-//the reducer specifies how the application state changes
-//all applications state is stored as a single object
-
 import * as types from '../actions/action-types';
 
 const initialState= {};
