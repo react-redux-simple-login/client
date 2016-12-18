@@ -20,12 +20,4 @@ xdescribe('<LogoutButton />', () => {
     expect(wrapperChildren.node.props.value).toEqual('Logout');
   });
 
-  xit('receives props from its parent component', () => {
-    //TODO: figure out how to test this
-  });
-
-  xit('triggers handleLogoutSubmit on submit', () => {
-    //TODO: figure out how to test this
-  });
-
 });
