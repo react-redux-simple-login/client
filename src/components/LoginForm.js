@@ -29,9 +29,7 @@ var LoginForm = React.createClass({
               type="submit"
               value="Login"
               id="submit"
-
           />
-
         </form>
       </div>
     );

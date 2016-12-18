@@ -6,13 +6,13 @@ import LoginForm from './LoginForm.js';
 import BackendDisplay from './BackendDisplay.js';
 import LogoutButton from './LogoutButton.js';
 
-var App = React.createClass({
+export const App = React.createClass({
 
   getInitialState() {
     return({ username: '', password: '', message: null, token: this.props.loginState.token});
   },
 
-  //Wouldn't log app state in production code, but included here to show functionality
+  //Wouldn't typically log app state in production code, but included here to show functionality
   componentDidMount() {
     console.log("Component state: ", this.state);
     console.log("Login State: ", this.props.loginState);
@@ -103,7 +103,12 @@ var App = React.createClass({
       />
       :
       <div>
-        <BackendDisplay />
+        <BackendDisplay
+          username={this.props.loginState.username}
+          node_version={this.props.loginState.node_version}
+          app_path={this.props.loginState.app_path}
+          timestamp={this.props.loginState.timestamp}
+        />
         <LogoutButton
           handleLogoutSubmit={this.handleLogout}
         />
@@ -132,4 +137,4 @@ const mapDispatchToProps = function(dispatch){
   }
 }
 
-module.exports = connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
