@@ -103,7 +103,12 @@ var App = React.createClass({
       />
       :
       <div>
-        <BackendDisplay />
+        <BackendDisplay
+          username={this.props.loginState.username}
+          node_version={this.props.loginState.node_version}
+          app_path={this.props.loginState.app_path}
+          timestamp={this.props.loginState.timestamp}
+        />
         <LogoutButton
           handleLogoutSubmit={this.handleLogout}
         />

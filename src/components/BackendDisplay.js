@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
-var BackendDisplay = React.createClass({
+export const BackendDisplay = React.createClass({
 
   render() {
 
-    const { username, node_version, app_path, timestamp } = this.props.loginState;
+    const { username, node_version, app_path, timestamp } = this.props;
     const dateTime = moment(timestamp).format('MMMM Do YYYY, h:mm:ss a');
 
     return (
@@ -24,4 +24,5 @@ const mapStateToProps = function(store) {
   return store;
 }
 
-module.exports = connect(mapStateToProps)(BackendDisplay);
+// module.exports = connect(mapStateToProps)(BackendDisplay);
+export default connect(mapStateToProps)(BackendDisplay);
