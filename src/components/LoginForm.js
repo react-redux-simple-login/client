@@ -25,10 +25,11 @@ var LoginForm = React.createClass({
             value={this.props.password}
             onChange={this.props.handlePasswordChange}
           />
-          <input
+        <button
             type="submit"
-            value="Login"
-          />
+            value="Login">
+            Login
+        </button>
         </form>
       </div>
     );

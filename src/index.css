@@ -1,5 +1,29 @@
-body {
+body, main, h1, div, form, input, button {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+main {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 150px;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  text-align: center;
+}
+
+input, button {
+  display: block;
+  text-align: center;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 3px;
 }
