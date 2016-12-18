@@ -12,18 +12,34 @@ main {
 
 h1 {
   text-align: center;
+  padding-left: 10px;
 }
 
 form {
   text-align: center;
 }
 
-input, button {
+input {
   display: block;
   text-align: center;
   width: 50%;
   margin-left: 25%;
   margin-top: 10px;
-  font-size: 16px;
+  padding: 5px;
+  font-size: 18px;
+  border: 1px solid lightgray;
   border-radius: 3px;
+}
+
+p {
+  width: 80%;
+  margin-left: 10%;
+  text-align: center;
+  font-size: 18px;
+}
+#submit {
+  width: 52%;
+}
+.bold {
+  font-weight: bold;
 }

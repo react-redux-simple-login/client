@@ -6,7 +6,7 @@ var LogoutButton = React.createClass({
       <form onSubmit={this.props.handleLogoutSubmit}>
         <input
           type="submit"
-          value="logout"
+          value="Logout"
         />
       </form>
     );
