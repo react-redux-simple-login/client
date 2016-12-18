@@ -1,4 +1,4 @@
-body, main, h1, div, form, input, button {
+body, main, h1, div, form, input, button, p {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -21,18 +21,14 @@ form {
 
 input {
   display: block;
-  text-align: center;
   width: 50%;
   margin-left: 25%;
   margin-top: 10px;
   padding: 5px;
+  text-align: center;
   font-size: 18px;
   border: 1px solid lightgray;
   border-radius: 3px;
-}
-
-#submit {
-  width: 52%;
 }
 
 p {
@@ -49,4 +45,8 @@ p {
 .message {
   color: red;
   padding-left: 5px;
+}
+
+#submit {
+  width: 52%;
 }

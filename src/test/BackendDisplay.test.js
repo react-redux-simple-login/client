@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import {BackendDisplay} from '../components/BackendDisplay';
+import BackendDisplay from '../components/BackendDisplay';
 
 describe.only('<BackendDisplay />', () => {
 
@@ -10,7 +10,6 @@ describe.only('<BackendDisplay />', () => {
     const node_version = 'v7.0.0';
     const app_path = '/Users/name/directory';
 
-    // renders the component with the props
     const wrapper = shallow(<BackendDisplay
                             username={username}
                             node_version={node_version}
@@ -31,7 +30,6 @@ describe.only('<BackendDisplay />', () => {
     });
 
     it('component correctly displays props', () => {
-
       const wrapperChildren = wrapper.children().nodes;
 
       const h1Text = wrapperChildren[0].props.children.join('');

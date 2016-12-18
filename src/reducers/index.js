@@ -2,7 +2,7 @@
 import { combineReducers} from 'redux';
 import userReducer from './user-reducer';
 
-var reducers = combineReducers({
+const reducers = combineReducers({
   loginState: userReducer,
 });
 
