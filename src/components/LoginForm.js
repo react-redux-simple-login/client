@@ -1,17 +1,19 @@
 import React from 'react';
 
-var LoginForm = React.createClass({
+const LoginForm = React.createClass({
 
   render() {
 
-    var message = (this.props.message) ?
+    const message = (this.props.message) ?
       <p className="message">{this.props.message}</p>
       : null;
 
     return (
       <div>
         <h1>Login</h1>
+
         {message}
+
         <form onSubmit={this.props.handleLoginSubmit}>
           <input
             type="text"

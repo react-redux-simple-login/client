@@ -6,10 +6,15 @@ import LoginForm from './LoginForm.js';
 import BackendDisplay from './BackendDisplay.js';
 import LogoutButton from './LogoutButton.js';
 
-export const App = React.createClass({
+const App = React.createClass({
 
   getInitialState() {
-    return({ username: '', password: '', message: null, token: this.props.loginState.token});
+    return({
+      username: '',
+      password: '',
+      message: null,
+      token: this.props.loginState.token
+    });
   },
 
   //Wouldn't typically log app state in production code, but included here to show functionality

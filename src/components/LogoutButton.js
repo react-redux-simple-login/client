@@ -1,7 +1,9 @@
 import React from 'react';
 
-var LogoutButton = React.createClass({
+const LogoutButton = React.createClass({
+
   render() {
+
     return (
       <form onSubmit={this.props.handleLogoutSubmit}>
         <input
