@@ -110,9 +110,9 @@ var App = React.createClass({
       </div>;
 
     return (
-      <div>
+      <main>
         {Display}
-      </div>
+      </main>
     );
   }
 });

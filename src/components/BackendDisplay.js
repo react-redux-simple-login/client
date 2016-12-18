@@ -12,9 +12,9 @@ var BackendDisplay = React.createClass({
     return (
       <div>
         <h1>Welcome, {username}!</h1>
-        <p>Node Version: {node_version}</p>
-        <p>Application path: {app_path}</p>
-        <p>Date/time: {dateTime}</p>
+        <p><span className="bold">Node Version:</span> {node_version}</p>
+        <p><span className="bold">Application Path:</span> {app_path}</p>
+        <p><span className="bold">Date/Time:</span> {dateTime}</p>
       </div>
     );
   }
