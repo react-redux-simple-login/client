@@ -12,7 +12,7 @@ export const App = React.createClass({
     return({ username: '', password: '', message: null, token: this.props.loginState.token});
   },
 
-  //Wouldn't log app state in production code, but included here to show functionality
+  //Wouldn't typically log app state in production code, but included here to show functionality
   componentDidMount() {
     console.log("Component state: ", this.state);
     console.log("Login State: ", this.props.loginState);
