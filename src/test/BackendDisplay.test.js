@@ -1,50 +1,47 @@
 'use strict';
-import React from 'react';
-import jsdom from 'jsdom'
-import { expect } from 'chai'
-import { shallow , mount} from 'enzyme';
-import { Provider } from 'react-redux';
-import ConnectedBackendDisplay, {BackendDisplay} from '../components/BackendDisplay';
-import configureMockStore from 'redux-mock-store';
 
-// the following creates a fake DOM environment so that we can use Enzyme's mount to test decorated components
-const doc = jsdom.jsdom('<!doctype html><html><body></body></html>');
-global.document = doc;
-global.window = doc.defaultView;
+import React from 'react';
+import { shallow } from 'enzyme';
+import {BackendDisplay} from '../components/BackendDisplay';
 
 describe.only('<BackendDisplay />', () => {
 
-    it('undecorated component correctly displays username', () => {
-        // defines the props passed into the component
-        const username = 'Foo'
+    const username = 'demo'
+    const node_version = 'v7.0.0';
+    const app_path = '/Users/name/directory';
 
+    // renders the component with the props
+    const wrapper = shallow(<BackendDisplay
+                            username={username}
+                            node_version={node_version}
+                            app_path={app_path}
+                          />);
 
-        // renders the component with the props
-        const wrapper = mount(<BackendDisplay username={username} />);
+    it ('is a div', () => {
+      expect(wrapper.type()).toEqual('div');
+    });
 
+    it ('has four children, one h1 and three ps', () => {
+      const wrapperChildren = wrapper.children();
+      expect(wrapperChildren.length).toEqual(4);
+      expect(wrapperChildren.nodes[0].type).toEqual('h1');
+      expect(wrapperChildren.nodes[1].type).toEqual('p');
+      expect(wrapperChildren.nodes[2].type).toEqual('p');
+      expect(wrapperChildren.nodes[3].type).toEqual('p');
+    });
 
-        // tests that the text of the elements equals the props passed in
-        expect(wrapper.find('h1').first().text()).to.equal(`Welcome, ${username}!`);
+    it('component correctly displays props', () => {
 
+      const wrapperChildren = wrapper.children().nodes;
 
+      const h1Text = wrapperChildren[0].props.children.join('');
+      expect(h1Text).toEqual(`Welcome, ${username}!`);
+
+      const node_versionText = wrapperChildren[1].props.children[2];
+      expect(node_versionText).toEqual(node_version);
+
+      const appPathText = wrapperChildren[2].props.children[2];
+      expect(appPathText).toEqual(app_path);
    });
 
-   //folowing is not working; need to study up a bit more to understand why
-
-  //   it('decorated component correctly displays username', () => {
-  //       // define the prop we want to pass in
-  //       const username = 'Foo'
-  //       const initialState = { }
-  //       // create our mock store with an empyty initial state
-  //       const store = configureMockStore(initialState)
-   //
-  //       // render the component with the mockStore
-  //       console.log(ConnectedBackendDisplay)
-  //       const wrapper = mount(<Provider store={store}>
-  //                                 <ConnectedBackendDisplay username={username}/>
-  //                               </Provider>);
-   //
-  //       // test that the text of the first <p> equals username prop that we passed in
-  //       expect(wrapper.find('h1').first().text()).to.equal(`Welcome, ${username}!`);
-  //  });
 });

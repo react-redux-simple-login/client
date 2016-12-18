@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import moment from 'moment';
 
 export const BackendDisplay = React.createClass({
@@ -20,9 +19,4 @@ export const BackendDisplay = React.createClass({
   }
 });
 
-const mapStateToProps = function(store) {
-  return store;
-}
-
-// module.exports = connect(mapStateToProps)(BackendDisplay);
-export default connect(mapStateToProps)(BackendDisplay);
+export default BackendDisplay;

@@ -6,7 +6,7 @@ import LoginForm from './LoginForm.js';
 import BackendDisplay from './BackendDisplay.js';
 import LogoutButton from './LogoutButton.js';
 
-var App = React.createClass({
+export const App = React.createClass({
 
   getInitialState() {
     return({ username: '', password: '', message: null, token: this.props.loginState.token});
@@ -137,4 +137,4 @@ const mapDispatchToProps = function(dispatch){
   }
 }
 
-module.exports = connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
