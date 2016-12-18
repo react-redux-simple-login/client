@@ -31,15 +31,22 @@ input {
   border-radius: 3px;
 }
 
+#submit {
+  width: 52%;
+}
+
 p {
   width: 80%;
   margin-left: 10%;
   text-align: center;
   font-size: 18px;
 }
-#submit {
-  width: 52%;
-}
+
 .bold {
   font-weight: bold;
+}
+
+.message {
+  color: red;
+  padding-left: 5px;
 }

@@ -5,7 +5,7 @@ var LoginForm = React.createClass({
   render() {
 
     var message = (this.props.message) ?
-      <p>{this.props.message}</p>
+      <p className="message">{this.props.message}</p>
       : null;
 
     return (
