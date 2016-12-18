@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-export const BackendDisplay = React.createClass({
+const BackendDisplay = React.createClass({
 
   render() {
 
